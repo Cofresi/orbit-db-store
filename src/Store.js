@@ -415,7 +415,7 @@ class Store {
       this._recalculateReplicationStatus(this.replicationStatus.progress + 1, entry.clock.time)
       await this._cache.set('_localHeads', [entry])
       await this._updateIndex()
-      this.events.emit('write', this.address.toString(), entry, this._oplog.heads)
+      this.events.emit('write', this.address.path, entry, this._oplog.heads)
       if (onProgressCallback) onProgressCallback(entry)
       return entry.hash
     }
